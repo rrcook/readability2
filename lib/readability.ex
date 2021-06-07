@@ -83,14 +83,15 @@ defmodule Readability do
     httpoison_options = Application.get_env(:readability, :httpoison_options, [])
     %{status_code: _, body: raw, headers: headers} = HTTPoison.get!(url, [], httpoison_options)
 
-    raw = if !String.valid?(raw) do
-      case Codepagex.to_string(raw, :iso_8859_1) do
-        {:ok, res} -> res
-        _ ->  Codepagex.to_string!(raw, :iso_8859_1, Codepagex.use_utf_replacement())
+    raw =
+      if !String.valid?(raw) do
+        case Codepagex.to_string(raw, :iso_8859_1) do
+          {:ok, res} -> res
+          _ -> Codepagex.to_string!(raw, :iso_8859_1, Codepagex.use_utf_replacement())
+        end
+      else
+        raw
       end
-    else
-      raw
-    end
 
     case is_response_markup(headers) do
       true ->
@@ -215,7 +216,7 @@ defmodule Readability do
     html_str = html_tree |> raw_html
 
     Regex.replace(tags_to_br, html_str, &"\n#{&1}")
-    |> Floki.parse()
+    |> Floki.parse_document!()
     |> Floki.text()
     |> String.trim()
   end
@@ -228,7 +229,10 @@ defmodule Readability do
     html_tree |> Floki.raw_html(encode: false)
   end
 
-  def parse(raw_html) when is_binary(raw_html), do: Floki.parse(raw_html)
+  def parse(raw_html) when is_binary(raw_html) do
+    {:ok, document} = Floki.parse_document(raw_html)
+    document
+  end
 
   def regexes(key), do: @regexes[key]
 
