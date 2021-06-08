@@ -1,6 +1,6 @@
 # Readability
 
-[![Build Status](https://travis-ci.org/markharper/readability2.svg?branch=master)](https://travis-ci.org/markharper/readability2)
+[![Build Status](https://travis-ci.com/github/markharper/readability2.svg?branch=master)](https://travis-ci.com/github/MarkHarper/readability)
 [![Readability version](https://img.shields.io/hexpm/v/readability2.svg)](https://hex.pm/packages/readability2)
 
 Readability2 is a tool for extracting and curating the primary readable content of a webpage. It's primarily a fork of [readability](https://github.com/keepcosmos/readability) with more up to date dependencies. 
