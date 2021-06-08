@@ -13,7 +13,7 @@ defmodule Readability.Mixfile do
     [
       app: :readability2,
       version: @version,
-      elixir: "~> 1.9",
+      elixir: "~> 1.3",
       description: @description,
       package: package(),
       build_embedded: Mix.env() == :prod,
