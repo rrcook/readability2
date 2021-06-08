@@ -23,12 +23,12 @@ defmodule Readability.HelperTest do
   """
 
   setup do
-    html_tree = Floki.parse(@sample)
+    {:ok, html_tree} = Floki.parse_fragment(@sample)
     {:ok, html_tree: html_tree}
   end
 
   test "change font tag to span", %{html_tree: html_tree} do
-    expectred = @sample |> String.replace(~r/font/, "span") |> Floki.parse()
+    {:ok, expectred} = @sample |> String.replace(~r/font/, "span") |> Floki.parse_document()
     result = Helper.change_tag(html_tree, "font", "span")
     assert result == expectred
   end
@@ -56,7 +56,6 @@ defmodule Readability.HelperTest do
 
     assert result == expected
   end
-
 
   test "inner text length", %{html_tree: html_tree} do
     result = html_tree |> Helper.text_length()
