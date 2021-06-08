@@ -1,11 +1,10 @@
 # Readability
 
-[![Build Status](https://travis-ci.org/keepcosmos/readability.svg?branch=master)](https://travis-ci.org/keepcosmos/readability)
-[![Readability version](https://img.shields.io/hexpm/v/readability.svg)](https://hex.pm/packages/readability)
-[![Deps Status](https://beta.hexfaktor.org/badge/all/github/keepcosmos/readability.svg)](https://beta.hexfaktor.org/github/keepcosmos/readability)
+[![Build Status](https://travis-ci.com/MarkHarper/readability.svg?branch=master)](https://travis-ci.com/github/MarkHarper/readability)
+[![Readability version](https://img.shields.io/hexpm/v/readability2.svg)](https://hex.pm/packages/readability2)
 
-Readability is a tool for extracting and curating the primary readable content of a webpage.  
-Check out The [Documentation](https://hexdocs.pm/readability/Readability.html) for full and detailed guides
+Readability2 is a tool for extracting and curating the primary readable content of a webpage. It's primarily a fork of [readability](https://github.com/keepcosmos/readability) with more up to date dependencies. 
+Check out The [Documentation](https://hexdocs.pm/readability2/Readability.html) for full and detailed guides
 
 ## Installation
 
@@ -15,7 +14,7 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 
 ```elixir
 def deps do
-  [{:readability, "~> 0.9"}]
+  [{:readability2, "~> 0.4"}]
 end
 ```
 
@@ -23,7 +22,7 @@ end
 
 ```elixir
 def application do
-  [applications: [:readability]]
+  [applications: [:readability2]]
 end
 ```
 
@@ -115,8 +114,6 @@ To run the test suite:
 * [ ] Convert relative paths into absolute paths of `img#src` and `a#href`
 
 ## Contributions are welcome!
-
-Check out [the main features milestone](https://github.com/keepcosmos/readability/milestones) and features of related projects below
 
 **Contributing**
 1. **Fork** the repo on GitHub
