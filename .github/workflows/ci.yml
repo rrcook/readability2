@@ -2,21 +2,6 @@
 on: push
 
 jobs:
-  test_1_9:
-    runs-on: ubuntu-20.04
-    name: OTP ${{matrix.otp}} / Elixir ${{matrix.elixir}}
-    strategy:
-      matrix:
-        otp: ['20.x', '21.x', '22.x']
-        elixir: ['1.9.x']
-    steps:
-      - uses: actions/checkout@v3
-      - uses: erlef/setup-beam@v1
-        with:
-          otp-version: ${{matrix.otp}}
-          elixir-version: ${{matrix.elixir}}
-      - run: mix deps.get
-      - run: mix test
   test_1_10:
     runs-on: ubuntu-20.04
     name: OTP ${{matrix.otp}} / Elixir ${{matrix.elixir}}
@@ -54,6 +39,21 @@ jobs:
       matrix:
         otp: ['22.x', '23.x', '24.x']
         elixir: ['1.12.x']
+    steps:
+      - uses: actions/checkout@v3
+      - uses: erlef/setup-beam@v1
+        with:
+          otp-version: ${{matrix.otp}}
+          elixir-version: ${{matrix.elixir}}
+      - run: mix deps.get
+      - run: mix test
+  test_1_14:
+    runs-on: ubuntu-20.04
+    name: OTP ${{matrix.otp}} / Elixir ${{matrix.elixir}}
+    strategy:
+      matrix:
+        otp: ['23.x', '24.x', '25.x']
+        elixir: ['1.14.x']
     steps:
       - uses: actions/checkout@v3
       - uses: erlef/setup-beam@v1
