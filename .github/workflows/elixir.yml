@@ -15,18 +15,10 @@ jobs:
         otp: ['20.3', '21.3', '22.2']
         elixir: ['1.9.4']
     steps:
-    - uses: actions/checkout@v3
-    - uses: erlef/setup-beam@v1
+      - uses: actions/checkout@v3
+      - uses: erlef/setup-beam@v1
         with:
           otp-version: ${{matrix.otp}}
-          elixir: ['1.8.2', '1.9.4']
-    - name: Restore dependencies cache
-      uses: actions/cache@v2
-      with:
-        path: deps
-        key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
-        restore-keys: ${{ runner.os }}-mix-
-    - name: Install dependencies
-      run: mix deps.get
-    - name: Run tests
-      run: mix test
+          elixir: ${{matrix.elixir}}
+      - run: mix deps.get
+      - run: mix test
