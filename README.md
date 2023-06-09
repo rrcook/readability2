@@ -1,6 +1,6 @@
 # Readability2
 
-[![Elixir CI](https://github.com/MarkHarper/readability/actions/workflows/elixir.yml/badge.svg)](https://github.com/MarkHarper/readability/actions/workflows/ci.yml)
+[![CI](https://github.com/MarkHarper/readability/actions/workflows/elixir.yml/badge.svg)](https://github.com/MarkHarper/readability/.github/workflows/ci.yml )
 [![Readability version](https://img.shields.io/hexpm/v/readability2.svg)](https://hex.pm/packages/readability2)
 
 Readability2 is a tool for extracting and curating the primary readable content of a webpage. It's primarily a fork of [readability](https://github.com/keepcosmos/readability) with more up to date dependencies. 
