@@ -6,6 +6,9 @@
 Readability2 is a tool for extracting and curating the primary readable content of a webpage. It's primarily a fork of [readability](https://github.com/keepcosmos/readability) with more up to date dependencies. 
 Check out The [Documentation](https://hexdocs.pm/readability2/Readability.html) for full and detailed guides
 
+This fork of the package has references to HTTPoison removed so that it is compatible with 
+the Prodigy Reloaded project.
+
 ## Installation
 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
