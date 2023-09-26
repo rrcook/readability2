@@ -75,47 +75,6 @@ defmodule Readability do
   @type headers :: list[tuple]
 
   @doc """
-  summarize the primary readable content of a webpage.
-  """
-  @spec summarize(url, options) :: Summary.t()
-  def summarize(url, opts \\ []) do
-    opts = Keyword.merge(opts, page_url: url)
-    httpoison_options = Application.get_env(:readability, :httpoison_options, [])
-    %{status_code: _, body: raw, headers: headers} = HTTPoison.get!(url, [], httpoison_options)
-
-    raw =
-      if !String.valid?(raw) do
-        case Codepagex.to_string(raw, :iso_8859_1) do
-          {:ok, res} -> res
-          _ -> Codepagex.to_string!(raw, :iso_8859_1, Codepagex.use_utf_replacement())
-        end
-      else
-        raw
-      end
-
-    case is_response_markup(headers) do
-      true ->
-        html_tree =
-          raw
-          |> Helper.normalize(url: url)
-
-        article_tree =
-          html_tree
-          |> ArticleBuilder.build(opts)
-
-        %Summary{
-          title: title(html_tree),
-          authors: authors(html_tree),
-          article_html: readable_html(article_tree),
-          article_text: readable_text(article_tree)
-        }
-
-      _ ->
-        %Summary{title: nil, authors: nil, article_html: nil, article_text: raw}
-    end
-  end
-
-  @doc """
   Extract MIME Type from headers
 
   ## Example
